@@ -24,4 +24,9 @@ def getWord(w):
         return "The word does not exist."
 
 word = input("Enter a word: ")
-print(getWord(word))
+output = getWord(word)
+if type(output) == list:
+    for item in output:
+        print(item)
+else:
+    print(output)
