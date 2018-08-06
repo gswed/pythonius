@@ -8,14 +8,15 @@ def getWord(w):
     if w in data:
         return data[w]
     elif len(get_close_matches(w, data.keys()))>0:
-        matches = input("Close matches found: %s , Enter X to close, or the index of the desired match: " %get_close_matches(w, data.keys()))
-        if matches == "X" or matches=="x":
+        matches = get_close_matches(w, data.keys())
+        response = input("Close matches found: %s , Enter X to close, or the index of the desired match: " %get_close_matches(w, data.keys()))
+        if response == "X" or response=="x":
             return "Thank you!"
         else:
             try:
-                int(matches)
-                if int(matches)<len(get_close_matches(w, data.keys())):
-                    return data[get_close_matches(w, data.keys())[int(matches)]]
+                index = int(response)
+                if index<len(matches):
+                    return data[matches[index]]
             except ValueError:
                 return "Sorry, please enter X or the desired index"
             return "Index out of bounds."
